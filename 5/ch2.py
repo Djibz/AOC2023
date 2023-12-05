@@ -1,6 +1,6 @@
 import re
 
-with open('./5/example.txt', 'r') as input:
+with open('./5/input.txt', 'r') as input:
     seedline = input.readline()
     seeds = [int(i) for i in seedline.split(':')[1].split()]
 
@@ -22,7 +22,7 @@ with open('./5/example.txt', 'r') as input:
             news += sources
             sources = news
             news = []
-            print(sources)
+            #print(sources)
         
             if (title[0][1] == 'location'):
                 min = sources[0]
@@ -33,8 +33,6 @@ with open('./5/example.txt', 'r') as input:
             continue
 
         (dest, source, r) = [int(i) for i in re.findall(r'^(\d+) (\d+) (\d+)$', line)[0]]
-        
-        print((dest, source, r))
 
         ss = sources.copy()
         to_add = []
@@ -80,4 +78,3 @@ with open('./5/example.txt', 'r') as input:
                 sources.remove(rm)
 
         sources += to_add
-        print(sources)
