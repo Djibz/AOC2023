@@ -1,6 +1,6 @@
 import re
 
-with open('./5/input.txt', 'r') as input:
+with open('./5/example.txt', 'r') as input:
     seedline = input.readline()
     seeds = [int(i) for i in seedline.split(':')[1].split()]
 
@@ -9,8 +9,7 @@ with open('./5/input.txt', 'r') as input:
         new_seeds += [seeds[j] + i for i in range(seeds[j+1])]
     input.readline()
 
-    print(new_seeds)
-    sources = new_seeds
+    sources = seeds
     news = []
     title = ()
     for line in input:
