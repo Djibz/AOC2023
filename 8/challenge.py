@@ -3,7 +3,7 @@ import re
 nodes = dict()
 from_left = dict()
 from_right = dict()
-with open('./8/example3.txt', 'r') as input:
+with open('./8/input.txt', 'r') as input:
 
   seq = input.readline()[:-1]
   input.readline()
@@ -34,13 +34,10 @@ def count_z(list):
   return count
 
 print(currents)
-while not count_z(currents) == len(currents):
-  if (count_z(currents) > 3):
-    print(count_z(currents))
-  for i in range(len(currents)):
+for i in range(len(currents)):
+  steps = 0
+  while currents[i][2] != 'Z':
     currents[i] = nodes[currents[i]][0 if seq[steps % len(seq)] == 'L' else 1]
-  steps += 1
-
-print(currents)
-
-print(steps)
+    steps += 1
+  
+  print(steps)
