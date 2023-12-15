@@ -15,11 +15,8 @@ print(transpose)
 total = 0
 for col in transpose:
     parts = col.split('#')
-    new_parts = []
-    for part in parts:
-        nb_r = len(re.findall(r'O', part))
-        new_parts.append(('O' * nb_r) + ('.' * (len(part) - nb_r)))
-    print('#'.join(new_parts))
+    new_parts = [ sorted(p,) for p in parts]
+    new_parts = [('O' * len(re.findall(r'O', p))) + ('.' * (len(p) - len(re.findall(r'O', p)))) for p in parts]
     for i, c in enumerate(list(reversed('#'.join(new_parts)))):
         if c == "O": total += i + 1
 
